@@ -1,16 +1,12 @@
 <template>
-  <div id="home">
-    <h1>This is home page</h1>
+  <div id="shop">
+    <h1>This is shop page</h1>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  components: {
-
-  },
+  name: 'Shop',
 };
 </script>
 
