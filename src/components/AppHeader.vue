@@ -1,9 +1,9 @@
 <template>
   <div id="app-header">
-    <b-navbar toggleable="md" type="dark" variant="dark">
+    <b-navbar toggleable="md" type="dark" variant="dark" fixed="top">
       <b-navbar-brand>
         <router-link to="/">
-          <span style="color: #b2b5b8">
+          <span style="color: #ffffff">
             <span id="brand">ES</span>E-Shop
           </span>
         </router-link>
@@ -46,6 +46,6 @@ a:hover {
   text-decoration: none;
 }
 .router-link-exact-active {
-  color: #b2b5b8;
+  color: #ffffff;
 }
 </style>
