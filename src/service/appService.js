@@ -14,4 +14,8 @@ function getAllGames() {
   return axiosInstance.get('/deals');
 }
 
-export default getAllGames;
+function getGameDetails(dealID) {
+  return axiosInstance.get(`/deals?id=${dealID}`);
+}
+
+export { getAllGames, getGameDetails };

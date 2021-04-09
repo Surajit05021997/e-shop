@@ -1,13 +1,29 @@
-import getAllGames from '@/service/appService';
+import { getAllGames, getGameDetails } from '@/service/appService';
 
 export default {
-  getAllGamesAction(context) {
+  resetData({ commit }) {
+    commit('resetData');
+  },
+  getAllGamesAction({ commit, state }) {
     const response = getAllGames();
     response.then((resp) => {
-      context.commit('getAllGames', resp.data);
+      commit('setAllGames', resp.data);
+      state.loading = false;
     })
       .catch((error) => {
         console.log(error);
+        state.loading = false;
+      });
+  },
+  getGameDetailsAction({ commit, state }, dealID) {
+    const response = getGameDetails(dealID);
+    response.then((resp) => {
+      commit('setGameDetails', resp.data);
+      state.loading = false;
+    })
+      .catch((error) => {
+        console.log(error);
+        state.loading = false;
       });
   },
 };

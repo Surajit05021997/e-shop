@@ -1,19 +1,26 @@
 "<template>
   <div id="home">
-    <b-container>
-      <b-row>
-        <b-col>
-          <div v-if="getFirst10Games !== []">
-            <div class="card" v-for="product in getFirst10Games" :key="product.dealID">
-              <img :src="product.thumb" alt="Avatar" style="width:100%">
-              <div class="container">
-                <h6><b>{{product.title}}</b></h6>
+    <div v-if="loading !== true">
+      <b-container>
+        <b-row cols="1" cols-sm="2" cols-md="4" cols-lg="4" align-h="center">
+          <b-col class="my-col" v-for="game in getFirst10Games" :key="game.dealID">
+            <router-link :to="{name: 'GameDetails', params: {dealID: game.dealID}}">
+              <div class="card">
+                <img :src="game.thumb" alt="Avatar" style="width:100%">
+                <div>
+                  <h6><b>{{game.title}}</b></h6>
+                </div>
               </div>
-            </div>
-          </div>
-        </b-col>
-      </b-row>
-    </b-container>
+            </router-link>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+    <div v-else>
+      <div class="text-center">
+        <b-spinner class="m-5" label="Spinning"></b-spinner>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,10 +38,11 @@ export default {
     };
   },
   created() {
+    this.resetData();
     this.getAllGamesAction();
   },
   computed: {
-    ...mapState(['allGames']),
+    ...mapState(['allGames', 'loading']),
     getFirst10Games() {
       const first10Games = [];
       if (this.allGames.length !== 0) {
@@ -46,7 +54,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['getAllGamesAction']),
+    ...mapActions(['getAllGamesAction', 'resetData']),
   },
 };
 </script>
@@ -57,12 +65,14 @@ export default {
   padding-top: 56px;
   padding-bottom: 24px;
 }
+.my-col {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
-  width: 20%;
-  padding: 10px;
-  margin: 20px;
+  width: 100%;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,1.0);
