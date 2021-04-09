@@ -1,10 +1,10 @@
-import getAllProducts from '@/service/appService';
+import getAllGames from '@/service/appService';
 
 export default {
-  getAllImageDataAction(context) {
-    const response = getAllProducts();
+  getAllGamesAction(context) {
+    const response = getAllGames();
     response.then((resp) => {
-      context.commit('getAllImageData', resp.data);
+      context.commit('getAllGames', resp.data);
     })
       .catch((error) => {
         console.log(error);

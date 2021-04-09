@@ -10,8 +10,8 @@ axiosInstance.interceptors.response.use(
   (error) => Promise.reject(error),
 );
 
-function getAllProducts() {
-  return axiosInstance.get('/products');
+function getAllGames() {
+  return axiosInstance.get('/deals');
 }
 
-export default getAllProducts;
+export default getAllGames;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://fakestoreapi.com';
+const baseURL = 'https://www.cheapshark.com/api/1.0';
 
 const axiosInstance = axios.create({
   baseURL,
