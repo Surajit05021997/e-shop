@@ -17,6 +17,9 @@
           <router-link to="/shop">Shop</router-link>
           <router-link to="/about">About</router-link>
         </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
+          <router-link to="/cart">Cart</router-link>
+        </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>

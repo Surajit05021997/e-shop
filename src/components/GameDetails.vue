@@ -13,6 +13,8 @@
               <h2>{{gameDetails.gameInfo.name}}</h2>
               <h4>Sale Price: </h4>${{gameDetails.gameInfo.salePrice}}
               <h4>Retail Price: </h4>${{gameDetails.gameInfo.retailPrice}}
+              <h4>In Cart: {{cartCount}}</h4><br>
+              <b-button variant="success" @click="add(gameDetails.gameInfo)">Add</b-button>
             </div>
           </b-col>
         </b-row>
@@ -33,18 +35,34 @@ export default {
   name: 'GameDetails',
   data() {
     return {
-
+      cartCount: 0,
+      selectedGame: this.$route.params.selectedGame,
     };
   },
   created() {
-    this.resetData();
-    this.getGameDetailsAction(this.$route.params.dealID);
+    // this.resetData();
+    console.log(this.$route.params.selectedGame);
+    this.$store.state.loading = true;
+    this.getGameDetailsAction(this.selectedGame.dealID);
+    this.getCartCount();
   },
   computed: {
-    ...mapState(['gameDetails', 'loading']),
+    ...mapState(['gameDetails', 'loading', 'cart']),
   },
   methods: {
-    ...mapActions(['getGameDetailsAction', 'resetData']),
+    ...mapActions(['getGameDetailsAction', 'resetData', 'addToCart']),
+    getCartCount() {
+      console.log(this.cart);
+      this.cart.forEach((data) => {
+        if (this.selectedGame.gameID === data.game.gameID) {
+          this.cartCount = data.quantity;
+        }
+      });
+    },
+    add(game) {
+      this.addToCart(game);
+      this.getCartCount();
+    },
   },
 };
 </script>

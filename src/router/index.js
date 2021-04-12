@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Shop from '../views/Shop.vue';
 import About from '../views/About.vue';
 import GameDetails from '../components/GameDetails.vue';
+import Cart from '../components/Cart.vue';
 
 Vue.use(VueRouter);
 
@@ -24,9 +25,14 @@ const routes = [
     component: About,
   },
   {
-    path: '/gamedeatails/:dealID',
+    path: '/gamedeatails/:selectedGame',
     name: 'GameDetails',
     component: GameDetails,
+  },
+  {
+    path: '/cart',
+    name: 'Crat',
+    component: Cart,
   },
 ];
 

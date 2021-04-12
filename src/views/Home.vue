@@ -4,7 +4,7 @@
       <b-container>
         <b-row cols="1" cols-sm="2" cols-md="4" cols-lg="4" align-h="center">
           <b-col class="my-col" v-for="game in getFirst10Games" :key="game.dealID">
-            <router-link :to="{name: 'GameDetails', params: {dealID: game.dealID}}">
+            <router-link :to="{name: 'GameDetails', params: {selectedGame: game}}">
               <div class="card">
                 <img :src="game.thumb" alt="Avatar" style="width:100%">
                 <div>
@@ -72,7 +72,7 @@ export default {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
-  width: 100%;
+  width: 80%;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,1.0);

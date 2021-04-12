@@ -26,4 +26,7 @@ export default {
         state.loading = false;
       });
   },
+  addToCart({ commit }, game) {
+    commit('addToCart', game);
+  },
 };
