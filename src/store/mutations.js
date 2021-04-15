@@ -25,4 +25,8 @@ export default {
       });
     }
   },
+  clearCart(state) {
+    state.cart = [];
+    state.gameIDList = [];
+  },
 };

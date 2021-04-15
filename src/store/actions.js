@@ -29,4 +29,7 @@ export default {
   addToCart({ commit }, game) {
     commit('addToCart', game);
   },
+  clearCart({ commit }) {
+    commit('clearCart');
+  },
 };

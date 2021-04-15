@@ -46,7 +46,7 @@ export default {
     getFirst10Games() {
       const first10Games = [];
       if (this.allGames.length !== 0) {
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < 20; i += 1) {
           first10Games.push(this.allGames[i]);
         }
       }
@@ -72,9 +72,19 @@ export default {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
-  width: 80%;
+  width: 100%;
+  height: 100%;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,1.0);
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
